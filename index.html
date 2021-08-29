@@ -1,6 +1,25 @@
- <!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<body>
- <p style="color:red">This is like a homepage</p> 	
-</body>
-</html> 
+ <head>
+<style>
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+</style>
+ </head>
+ <body>
+<a href="https://www.w3schools.com">This is a link</a> 
+<script>
+  let div = document.createElement('div');
+  div.className = "alert";
+  div.innerHTML = "<strong>Всем привет!</strong> Вы прочитали важное сообщение.";
+
+  document.body.append(div);
+</script>
+
+ </body>
+</html>
