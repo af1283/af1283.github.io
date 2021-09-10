@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" href="./highlightjs/styles/qtcreator-dark.min.css">
+<script src="./highlightjs/highlight.min.js"></script>
+<script src="./highlightjs/highlightjs-line-numbers.js"> </script>
+<script>
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+hljs.highlightAll();
+</script>
+
+<style>
+
+pre > code {
+	
+    font-family: "Sans Mono", "Consolas", "Courier", monospace;
+	font-size: 14px;
+}
+
+.hljs-ln-numbers {
+	  
+      text-align: center;
+      color: #ccc;
+      border-right: 10px solid #000000;
+      vertical-align: top;
+      padding-right: 5px;
+
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .hljs-ln-code {
+      padding-left: 10px;
+    }
+
+    /* .hljs-ln-code,
+    .hljs-ln-numbers {
+      line-height: 14px;
+    } */
+
+    code {
+      white-space: pre-wrap;
+      overflow: auto;
+    }
+
+
+	</style>
+ </head>
+ <body>
+
+
+<!-- 
+	осталось только добавить поле, куда вводится текст и отображается уже код
+-->
+
+Это первый пример<br>
+<pre>
+<code>#include <iostream>
+
+using namespace std;
+
+template <typename First, typename Second, typename... Types>
+struct is_all_same
+{
+    static const bool value = std::is_same_v<First, Second> && is_all_same<Second, Types...>::value;
+};
+
+
+
+template <typename First, typename Second>
+struct is_all_same<First, Second>
+{
+    static const bool value = std::is_same_v<First, Second>;
+};
+
+
+
+// до C++17
+//template <typename First>
+//void print(const First& first)
+//{
+//     std::cout << first << '\n';
+//}
+
+template <typename First, typename... Tail>
+void print(const First& first, const  Tail&... tail)
+{
+    std::cout << "size of tail " << sizeof...(tail) << " " << first << '\n';
+    cout << first << '\n';
+    // if constexpr начиная с С++17
+    if constexpr (sizeof...(tail) > 0)
+    {
+        print(tail...);
+    }
+}
+
+int main()
+{
+    //print("Hello World!", 2.3, 100);
+    print(is_all_same<int, int, int>::value);
+    cout << is_all_same<int, int, float>::value;
+    //cout <<
+    return 0;
+}
+
+}</code>
+</pre>
+
+Это второй пример<br>
+<pre>
+<code data-ln-start-from="10">int main()
+{
+    //return 0;
+}</code>
+</pre>
+
+
+ </body>
+</html>
